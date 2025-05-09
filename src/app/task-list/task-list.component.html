@@ -1,0 +1,15 @@
+<h2>Lista de Tareas</h2>
+<ul>
+
+  @for(item of tasks; track item.id){
+  <li>
+    <input type="checkbox" [checked]=" item.completed" (change)="onToogleCompleted(item.id)">
+    <span class="texto-subtitulo" [ngClass]="{'completed': item.completed}">{{item.name}}</span>
+    @if(!item.completed){
+      <button class="btn-css" (click)="onDeleteTask(item.id)">Eliminar</button>
+    }
+  </li>
+  } @empty {
+    <li> No se encontraron tareas.</li>
+  }
+</ul>
