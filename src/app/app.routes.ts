@@ -8,7 +8,8 @@ export const routes: Routes = [
   //   loadChildren: () => import('./authentication/authentication.routes').then((m) => m.authRoutes)
   // }
   // {
-  //   path: '',
+  //   path: 'rrhh',
+  //   component: TaskListComponent,
   //   children: [
   //     {
   //       path: 'form-route',
@@ -16,7 +17,21 @@ export const routes: Routes = [
   //     },
   //     {
   //       path: 'new-form',
-  //       component: TaskListComponent,
+  //       component: TaskComponent,
+  //     },
+  //   ],
+  // },
+  // {
+  //   path: 'administration',
+  //   component: TaskFormComponent,
+  //   children: [
+  //     {
+  //       path: 'users',
+  //       component: FormRouteComponent,
+  //     },
+  //     {
+  //       path: 'consult',
+  //       component: TaskComponent,
   //     },
   //   ],
   // },
