@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { TaskFormComponent } from "./task-form/task-form.component";
-import { TaskListComponent } from "./task-list/task-list.component";
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [TaskFormComponent, TaskListComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [RouterOutlet],
+  styleUrl: './app.component.css',
+  template: `<router-outlet></router-outlet>`
 })
 export class AppComponent {
   title = 'proyecto-services';

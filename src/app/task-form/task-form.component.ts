@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { TaskService } from '../services/task.service';
 import { FormsModule } from '@angular/forms';
 
@@ -11,14 +11,17 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './task-form.component.css',
 })
 export class TaskFormComponent {
-  newTaskName: string = '';
+  readonly #taskService = inject(TaskService);
+  newTaskName = signal<string>('');
 
-  constructor(private taskService: TaskService) {}
+  // newTaskName: string = '';
+
+  // constructor(private taskService: TaskService) {}
 
   addTask(): void {
-    if (this.newTaskName.trim()) {
-      this.taskService.addTask(this.newTaskName);
-      this.newTaskName = '';
+    if (this.newTaskName().trim()) {
+      this.#taskService.addTask(this.newTaskName());
+      this.newTaskName.set('');
     }
   }
 }

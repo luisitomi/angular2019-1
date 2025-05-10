@@ -1,7 +1,7 @@
 <h2>Lista de Tareas</h2>
 <ul>
 
-  @for(item of tasks; track item.id){
+  @for(item of tasks(); track item.id){
   <li>
     <input type="checkbox" [checked]=" item.completed" (change)="onToogleCompleted(item.id)">
     <span class="texto-subtitulo" [ngClass]="{'completed': item.completed}">{{item.name}}</span>
@@ -13,3 +13,7 @@
     <li> No se encontraron tareas.</li>
   }
 </ul>
+
+<br><br><br><br><br>
+
+<button (click)="redireccionarPagina()">Ir a componente de prueba</button>
