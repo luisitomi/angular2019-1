@@ -3,6 +3,10 @@ import { FormRouteComponent } from './form-route/form-route.component';
 import { TaskComponent } from './task/task.component';
 
 export const routes: Routes = [
+  {
+    path: 'products',
+    loadChildren: () => import('./products/prodcts.routes').then((m) => m.productsRoutes)
+  },
   // {
   //   path: 'auth',
   //   loadChildren: () => import('./authentication/authentication.routes').then((m) => m.authRoutes)
