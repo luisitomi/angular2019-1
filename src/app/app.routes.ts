@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { FormRouteComponent } from './form-route/form-route.component';
-import { TaskComponent } from './task/task.component';
+import { FormRouteComponent } from './modulos/formulario/form-route/form-route.component';
+import { TaskComponent } from './modulos/tareas/task/task.component';
 
 export const routes: Routes = [
   {
     path: 'products',
-    loadChildren: () => import('./products/prodcts.routes').then((m) => m.productsRoutes)
+    loadChildren: () => import('./modulos/products/prodcts.routes').then((m) => m.productsRoutes)
   },
   // {
   //   path: 'auth',

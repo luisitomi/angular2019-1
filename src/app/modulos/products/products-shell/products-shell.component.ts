@@ -8,7 +8,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { CustomValidators } from '../../helpers/custom-validators.validator';
+import { CustomValidators } from '../../../helpers/custom-validators.validator';
+import { TokenService } from '../../../helpers/services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products-shell',
@@ -19,6 +21,9 @@ import { CustomValidators } from '../../helpers/custom-validators.validator';
 })
 export class ProductsShellComponent implements OnInit {
   readonly fb = inject(FormBuilder);
+  readonly #tokenService = inject(TokenService);
+  readonly #router = inject(Router);
+
   nameForm = signal<string>('');
   form!: FormGroup;
 
@@ -41,7 +46,9 @@ export class ProductsShellComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    localStorage.clear();
+    if(typeof sessionStorage !== 'undefined'){
+      this.#tokenService.removeToken();
+    }
   }
 
   get name(): FormControl {
@@ -55,6 +62,8 @@ export class ProductsShellComponent implements OnInit {
   onSubmit(): void {
     if (this.form.valid) {
       this.nameForm.set(this.name.value);
+      this.#tokenService.setToken(this.name.value);
+      this.#router.navigate(['/form-route']).then();
     } else {
       this.form.markAllAsTouched();
       this.nameForm.set('');

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
-import { TaskService } from '../services/task.service';
+import { TaskService } from '../../../services/task.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({

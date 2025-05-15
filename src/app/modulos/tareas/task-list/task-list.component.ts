@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit, inject, signal } from '@angular/core';
-import { ITask, TaskService } from '../services/task.service';
+import { ITask, TaskService } from '../../../services/task.service';
 import { Subject, Subscription, takeUntil } from 'rxjs';
 import { Router } from '@angular/router';
 
