@@ -1,0 +1,62 @@
+<h1>{{ title }}</h1>
+
+<hr style="border: 1px solid #ccc; margin-bottom: 1.5em;">
+
+<h2><span style="color: #007bff;">Pipes Integrados de Angular</span></h2>
+
+<h3><span style="color: #28a745;">Pipe de Fecha (DatePipe)</span></h3>
+<p><span style="font-weight: bold;">Fecha Actual (por defecto): {{ fechaActual | date }}</span></p>
+<p><span style="font-weight: bold;">Fecha Corta: {{ fechaActual | date:'short'}}</span></p>
+<p><span style="font-weight: bold;">Fecha completa: {{ fechaActual | date:'fullDate'}}</span></p>
+<p><span style="font-weight: bold;">Formato Personalziado (DD/MM/YYYY HH:MM): {{ fechaActual | date:'dd/MM/yyyy HH:mm'}}</span></p>
+
+<hr>
+
+<h3><span style="color: #28a745;">Pipes de Caso (UpperCasePipe, LowerCasePipe)</span></h3>
+<p><span style="font-weight: bold;">Mensaje original: <strong style="color: #dc3545;">{{ mensaje }}</strong></span></p>
+<p><span style="font-weight: bold;">En Mayúsculas: {{ mensaje | uppercase }}</span></p>
+<p><span style="font-weight: bold;">En Minúsculas: {{ mensaje | lowercase }}</span></p>
+
+<hr>
+
+<h3><span style="color: #28a745;">Pipes Numéricos (CurrencyPipe, DecimalPipe, PercentPipe)</span></h3>
+<p><span style="font-weight: bold;">Precio original :<strong style="color: #dc3545;">{{ precioProducto }}</strong></span></p>
+<p><span style="font-weight: bold;">Precio (USD, por defecto): {{ precioProducto | currency }}</span></p>
+<p><span style="font-weight: bold;">Precio (EUR, símbolo): {{ precioProducto | currency: 'EUR': 'symbol'}}</span></p>
+<p><span style="font-weight: bold;">Precio (MXN, coon código): {{ precioProducto | currency: 'MXN': 'code': '1.2-2'}}</span></p>
+
+<p><span style="font-weight: bold;">Número Original: <strong style="color: #dc3545;">{{ precioProducto }}</strong></span></p>
+<p><span style="font-weight: bold;">Número (1 entero, 2-2 decimales): {{ precioProducto |number: '1.2-2'}}</span></p>
+<p><span style="font-weight: bold;">Número (2 enteros, 0-0 decimales): {{ precioProducto | number: '2.0-0'}}</span></p>
+
+<p><span style="font-weight: bold;">Progreso (Original): <strong style="color: #dc3545;">{{ progresoCompletado }}</strong></span></p>
+<p><span style="font-weight: bold;">Progreso (Porcentaje, 2 decimales): {{ progresoCompletado | percent: '1.2-2'}}</span></p>
+
+<hr>
+
+<h3><span style="color: #28a745;">Pipe de SlicePipe</span></h3>
+<p><span style="font-weight: bold;">Texto original: <strong style="color: #dc3545;">{{ textoLargo }}</strong></span></p>
+<p><span style="font-weight: bold;">Texto del índice 10 en adelante: {{ textoLargo | slice:10}}</span></p>
+<p><span style="font-weight: bold;">Texto del pindice 0 al 15: {{ textoLargo | slice: 0:15}}</span></p>
+<p><span style="font-weight: bold;">Array original: <strong style="color: #dc3545;">{{ arrayNumeros | json}}</strong></span></p>
+<p><span style="font-weight: bold;">Array (elementos del índice 2 al 4): {{ arrayNumeros | slice: 2:5 | json}}</span></p>
+
+<hr>
+
+<h3><span style="color: #28a745;">Pipe Asíncrono (AsyncPipe)</span></h3>
+<p><span style="font-weight: bold;">El async pipe se suscribe automáticamente a un Observable o Promise y devuelve un valor,
+  desuscribiéndose cuando se destruye el componenete.</span></p>
+<p *ngIf="datosAsincrono$ | async as datos"><span style="font-weight: bold;">
+  Datos de Promise: * {{ datos }} **
+</span></p>
+<p *ngIf="!(datosAsincrono$ | async)"><span style="font-weight: bold;">
+  Cargando datos de Promise...
+</span></p>
+
+<hr>
+
+<h2><span style="color: #007bff;">Pipe Personalizado: TruncarTextoPipe</span></h2>
+<p><span style="font-weight: bold;">Texto Original: <strong style="color: #dc3545;"> {{ textoLargo }}</strong></span></p>
+<p><span style="font-weight: bold;">Texto Truncado (20 caracteres): {{ textoLargo | truncarTexto: 20 }}</span></p>
+<p><span style="font-weight: bold;">Texto Truncado (10 caracteres, con "[más]"): {{ textoLargo | truncarTexto: 10: ' [más]' }}</span></p>
+<p><span style="font-weight: bold;">Otro texto (más corto que 50, no se trunca): {{ 'Un texto corto' | truncarTexto }}</span></p>
